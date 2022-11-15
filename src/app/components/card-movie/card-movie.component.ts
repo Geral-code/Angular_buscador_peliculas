@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-card-movie',
@@ -6,10 +6,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card-movie.component.css']
 })
 export class CardMovieComponent implements OnInit {
+  @Input('movie') movie: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  getImagen() {
+    return this.movie.Poster !== 'N/A' ? this.movie.Poster : 'https://via.placeholder.com/600';
+
+
+  /*  if(this.movie.Poster === 'N/A'){
+      return 'https://via.placeholder.com/600';
+    } else {
+      return this.movie.Poster;
+    }*/
   }
 
 }

@@ -8,6 +8,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
+  movies: any[] = [];
 
   constructor(private movieService: MovieService) { }
 
@@ -17,6 +18,11 @@ export class MoviesComponent implements OnInit {
   getMovies(searchTerm: string) {
    this.movieService.getMovies(searchTerm).subscribe(data => {
     console.log(data);
+    if(data.Response === "False"){
+      this.movies = [];
+    } else {
+      this.movies = data.Search;
+    }    
    })
 
   }
