@@ -13,7 +13,7 @@ export class MovieService {
   constructor(private http: HttpClient) { }
 
   getMovies(searchTerm: string): Observable<any>{
-    return this.http.get(this.API_URL + '&s=' + searchTerm);
+    return this.http.get(`${this.API_URL}&s=${searchTerm}`);
   }
 
 
